@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/BahanUjian/Assets/Scenes/MainMenu.unity
     guid: 2e16f849023091b42855479ae651ddc7
   - enabled: 1
+    path: Assets/BahanUjian/Assets/Scenes/LevelSelect.unity
+    guid: 1d141d9f45b407647a59912c02ae0593
+  - enabled: 1
     path: Assets/BahanUjian/Assets/Scenes/Level1.unity
     guid: f5904b61af2981a46ad42ecef61f62ad
   - enabled: 1
     path: Assets/BahanUjian/Assets/Scenes/Level2.unity
     guid: e521d1e4324bdc94fbe5832ae7ce9e0e
+  - enabled: 1
+    path: Assets/BahanUjian/Assets/Scenes/GameOver.unity
+    guid: 3c6a2ccbc00441042ac3549411bc75d7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fe1ab2d6156458a49a39446e409f463c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ae5fb4546425fff43bf39c8ca60bd996, type: 3}

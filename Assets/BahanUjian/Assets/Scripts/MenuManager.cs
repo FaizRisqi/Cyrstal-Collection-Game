@@ -3,18 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Bisa dikembalikan nanti untuk Level Select
     public void PlayGame()
     {
-        Debug.Log("Play clicked - Loading Level1");
-        SceneManager.LoadScene("Level1");
+        Debug.Log("Play clicked - Loading LevelSelect");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void SelectLevel()
     {
-        Debug.Log("Select Level clicked");
-        // Nanti buat LevelSelectScene untuk ini
-        // SceneManager.LoadScene("LevelSelect");
+        Debug.Log("Select Level clicked - Loading LevelSelect");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void QuitGame()

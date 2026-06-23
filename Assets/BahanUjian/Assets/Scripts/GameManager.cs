@@ -191,6 +191,11 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("ShowSuccess called - Level " + currentLevel);
 
+        // Save score untuk reference
+        PlayerPrefs.SetInt("FinalScore", score);
+        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+        PlayerPrefs.Save();
+
         if (successPanel != null)
         {
             successPanel.SetActive(true);
@@ -198,8 +203,8 @@ public class GameManager : MonoBehaviour
             if (successMessageText != null)
             {
                 successMessageText.text = "Level " + currentLevel + " Complete!\n" +
-                                         "Score: " + score + "\n" +
-                                         "Time: " + Mathf.FloorToInt(timeRemaining) + "s";
+                                        "Score: " + score + "\n" +
+                                        "Time: " + Mathf.FloorToInt(timeRemaining) + "s";
             }
 
             // Show next level button only for Level 1
@@ -231,50 +236,15 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("CheckGameOver - Score: " + score + " / Min: " + minimumScoreToWin);
 
-        bool hasEnoughScore = score >= minimumScoreToWin;
+        // Save score dan level untuk GameOverScene
+        PlayerPrefs.SetInt("FinalScore", score);
+        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+        PlayerPrefs.Save();
 
-        if (gameOverPanel != null)
-        {
-            gameOverPanel.SetActive(true);
-            
-            if (gameOverMessageText != null)
-            {
-                if (hasEnoughScore)
-                {
-                    gameOverMessageText.text = "Time's Up!\n" +
-                                              "But you collected enough!\n" +
-                                              "Score: " + score + " (Min: " + minimumScoreToWin + ")";
-                    gameOverMessageText.color = Color.yellow;
-                    
-                    // Can go to next level
-                    if (currentLevel == 1 && nextLevelButton != null)
-                    {
-                        nextLevelButton.gameObject.SetActive(true);
-                    }
-                }
-                else
-                {
-                    gameOverMessageText.text = "Time's Up!\n" +
-                                              "Not enough score!\n" +
-                                              "Score: " + score + " (Need: " + minimumScoreToWin + ")";
-                    gameOverMessageText.color = Color.red;
-                    
-                    // Only restart available
-                    if (nextLevelButton != null)
-                    {
-                        nextLevelButton.gameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        else
-        {
-            Debug.LogError("Game Over Panel is NULL!");
-        }
-
-        // Show cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Debug.Log("Loading GameOver scene with score: " + score);
+        
+        // Load GameOver scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 
     // FIXED: Button functions with proper time scale reset
